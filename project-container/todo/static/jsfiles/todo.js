@@ -41,13 +41,15 @@ function addTodo(event) {
 }
 
 function deleteItem(event) {
-    removeItem= event.target;
+    const removeItem = event.target;
     if(removeItem.classList[0] === "trash-btn") {
         const rm = removeItem.parentElement;
-        rm.remove();
+        rm.classList.add("fall");
+        rm.addEventListener("transitionend", ()=>rm.remove());
+
     }
 
-
+    // SEt the class to completed... check .completed in css to see
     if (removeItem.classList[0] === "completed-btn") {
         const stroke =removeItem.parentElement;
         stroke.classList.toggle('completed');
